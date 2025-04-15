@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Lazy Load Demo</title>
+    <style>
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Lazy Loading Images</h1>
+
+    <div id="imageContainer">
+        <!-- Images will be added dynamically here -->
+    </div>
+
+    <script>
+    const container = document.getElementById('imageContainer');
+
+    for (let i = 1; i <= 10; i++) {
+      const img = document.createElement('img');
+      img.src = `https://picsum.photos/600/400?random=${i}`;
+      img.alt = `Random Image ${i}`;
+      img.loading = "lazy"; // <-- Lazy loading here
+      container.appendChild(img);
+    }
+    </script>
+</body>
+</html>

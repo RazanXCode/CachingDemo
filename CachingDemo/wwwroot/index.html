@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Posts Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 1rem;
+        }
+
+        .post {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Posts</h1>
+    <button onclick="loadPosts()">Load Posts</button>
+    <div id="postsContainer"></div>
+
+    <script>
+    async function loadPosts() {
+      const container = document.getElementById("postsContainer");
+      container.innerHTML = "Loading...";
+
+      try {
+          const response = await fetch("http://localhost:5185/api/Post"); // or /memory-posts
+        const result = await response.json();
+
+        container.innerHTML = ""; // Clear loading text
+
+        result.data.forEach(post => {
+          const postDiv = document.createElement("div");
+          postDiv.classList.add("post");
+          postDiv.innerHTML = `
+            <h3>${post.title}</h3>
+            <p>${post.body}</p>
+          `;
+          container.appendChild(postDiv);
+        });
+
+        console.log("Data Source:", result.source); // To see if from API, Redis, or Memory
+      } catch (error) {
+        container.innerHTML = "<p>Error fetching posts.</p>";
+        console.error(error);
+      }
+    }
+    </script>
+</body>
+</html>
