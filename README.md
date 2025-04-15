@@ -12,7 +12,7 @@ This project demonstrates how to fetch data from an external API and apply multi
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 ### API Endpoints
 
 - /posts	Get posts from JSONPlaceholder (Redis)
