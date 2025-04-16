@@ -29,7 +29,7 @@
       container.innerHTML = "Loading...";
 
       try {
-          const response = await fetch("http://localhost:5185/api/Post"); // or /memory-posts
+          const response = await fetch("http://localhost:5185/api/Post");
         const result = await response.json();
 
         container.innerHTML = ""; // Clear loading text
@@ -44,7 +44,7 @@
           container.appendChild(postDiv);
         });
 
-        console.log("Data Source:", result.source); // To see if from API, Redis, or Memory
+     
       } catch (error) {
         container.innerHTML = "<p>Error fetching posts.</p>";
         console.error(error);
