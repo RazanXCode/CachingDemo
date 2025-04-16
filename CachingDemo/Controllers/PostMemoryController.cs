@@ -33,7 +33,7 @@ namespace CachingDemo.Controllers
             var cacheEntryOptions = new MemoryCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(3),
-                SlidingExpiration = TimeSpan.FromMinutes(1)
+               
             };
 
             _memoryCache.Set(cacheKey, posts, cacheEntryOptions);
